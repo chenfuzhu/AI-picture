@@ -61,7 +61,7 @@ public class PictureServiceImpl extends ServiceImpl<PictureMapper, Picture> impl
             boolean exists = this.lambdaQuery()
                     .eq(Picture::getId, pictureId)
                     .exists();
-            ThrowUtils.throwIf(!exists, ErrorCode.NOT_FOUND_ERROR, "图片不存在");
+            ThrowUtils.throwIf(!exists, ErrorCode.NOT_FOUND_ERROR, "Picture is not exists");
         }
         // 上传图片，得到信息
         // 按照用户 id 划分目录
@@ -84,7 +84,7 @@ public class PictureServiceImpl extends ServiceImpl<PictureMapper, Picture> impl
             picture.setEditTime(new Date());
         }
         boolean result = this.saveOrUpdate(picture);
-        ThrowUtils.throwIf(!result, ErrorCode.OPERATION_ERROR, "图片上传失败");
+        ThrowUtils.throwIf(!result, ErrorCode.OPERATION_ERROR, "Upload picture failed");
         return PictureVO.objToVo(picture);
     }
 
@@ -191,12 +191,12 @@ public class PictureServiceImpl extends ServiceImpl<PictureMapper, Picture> impl
         String url = picture.getUrl();
         String introduction = picture.getIntroduction();
         // 修改数据时，id 不能为空，有参数则校验
-        ThrowUtils.throwIf(ObjUtil.isNull(id), ErrorCode.PARAMS_ERROR, "id 不能为空");
+        ThrowUtils.throwIf(ObjUtil.isNull(id), ErrorCode.PARAMS_ERROR, "The ID cannot be empty.");
         if (StrUtil.isNotBlank(url)) {
-            ThrowUtils.throwIf(url.length() > 1024, ErrorCode.PARAMS_ERROR, "url 过长");
+            ThrowUtils.throwIf(url.length() > 1024, ErrorCode.PARAMS_ERROR, "\n" + "The URL is too long.");
         }
         if (StrUtil.isNotBlank(introduction)) {
-            ThrowUtils.throwIf(introduction.length() > 800, ErrorCode.PARAMS_ERROR, "简介过长");
+            ThrowUtils.throwIf(introduction.length() > 800, ErrorCode.PARAMS_ERROR, "\n" + "The profile is too long.");
         }
     }
 
