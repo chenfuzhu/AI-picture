@@ -30,6 +30,7 @@ import java.util.stream.Collectors;
 import static com.chenfuzhu.aipicturebackend.constant.UserConstant.USER_LOGIN_STATE;
 import static com.chenfuzhu.aipicturebackend.exception.ErrorCode.NOT_LOGIN_ERROR;
 import static com.chenfuzhu.aipicturebackend.exception.ErrorCode.OPERATION_ERROR;
+import static com.chenfuzhu.aipicturebackend.model.enums.UserRoleEnum.ADMIN;
 
 /**
 * @author chenfuzhu
@@ -222,6 +223,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
     }
 
 
+
     /**
      * 加密密码
      * @param userPassword 用户密码
@@ -231,6 +233,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         // 加盐，混淆密码
         final String salt="chenfuzhu";
         return DigestUtils.md5DigestAsHex((salt + userPassword).getBytes());
+    }
+
+    @Override
+    public boolean isAdmin(User user) {
+        return user != null && UserRoleEnum.ADMIN.getValue().equals(user.getUserRole());
     }
 }
 

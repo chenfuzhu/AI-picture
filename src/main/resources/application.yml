@@ -12,6 +12,9 @@ spring:
     url: jdbc:mysql://localhost:3306/AI_picture
     username: root
     password: 123456
+  servlet:
+    multipart:
+      max-file-size: 10MB
 
 mybatis-plus:
   configuration:
@@ -35,3 +38,11 @@ knife4j:
         api-rule: package
         api-rule-resources:
           - com.chenfuzhu.aipicturebackend.controller
+
+cos:
+  client:
+    host: xxx
+    secretID: xxx
+    secretKey: xxx
+    region: xxx
+    bucket: xxx
