@@ -7,13 +7,13 @@ An enterprise-level collaborative image library platform built based on `Spring 
 
 ## Some Basic Tools Version
 
-__JDK：`v1.8`</br>__
-__Spring-boot:`v2.7.6`</br>__
-__MySql:`v8.0.42`</br>__
-__MyBatis-Plus:`v3.5.12`</br>__
-__Redis:`v`</br>__
-__Caffeine:`v`</br>__
-__HuTool:`v5.8.16`</br>__
+JDK：`v1.8`</br>
+Spring-boot:`v2.7.6`</br>
+MySql:`v8.0.42`</br>
+MyBatis-Plus:`v3.5.12`</br>
+Redis:`v`</br>
+Caffeine:`v`</br>
+HuTool:`v5.8.16`</br>
 
 ****
 
