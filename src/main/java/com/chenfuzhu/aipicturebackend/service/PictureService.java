@@ -3,6 +3,7 @@ package com.chenfuzhu.aipicturebackend.service;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.chenfuzhu.aipicturebackend.model.dto.picture.PictureQueryRequest;
+import com.chenfuzhu.aipicturebackend.model.dto.picture.PictureReviewRequest;
 import com.chenfuzhu.aipicturebackend.model.dto.picture.PictureUploadRequest;
 import com.chenfuzhu.aipicturebackend.model.entity.Picture;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -38,4 +39,14 @@ public interface PictureService extends IService<Picture> {
     public Page<PictureVO> getPictureVOPage(Page<Picture> picturePage, HttpServletRequest request);
 
     public void validPicture(Picture picture);
+
+    /**
+     * 图片审核
+     *
+     * @param pictureReviewRequest
+     * @param loginUser
+     */
+    void doPictureReview(PictureReviewRequest pictureReviewRequest, User loginUser);
+
+    public void fillReviewParams(Picture picture, User loginUser);
 }
